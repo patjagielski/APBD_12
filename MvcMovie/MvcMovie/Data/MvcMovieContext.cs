@@ -15,5 +15,11 @@ namespace MvcMovie.Data
         }
 
         public DbSet<Movie> Movie { get; set; }
+
+        protected override void OnModelCreating(ModelBuilder model)
+        {
+            base.OnModelCreating(model);
+            model.Entity<Movie>(m => m.Property(p => p.ReleaseDate).HasColumnName("ReleaseDate"));
+        }
     }
 }
